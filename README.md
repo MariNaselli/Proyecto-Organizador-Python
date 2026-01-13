@@ -8,7 +8,7 @@ Automatización en Python diseñada para la clasificación de archivos y el moni
 
 ** Infraestructura Dinámica: El script genera automáticamente las carpetas de destino si no se encuentran en el directorio.
 
-**Integridad de Datos: Implementa un sistema de numeración para evitar la sobrescritura en caso de nombres duplicados (ej: archivo_1.pdf).
+** Integridad de Datos: Implementa un sistema de numeración para evitar la sobrescritura en caso de nombres duplicados (ej: archivo_1.pdf).
 
 ** Filtro de Exclusión: Protege el código fuente, la documentación y archivos de sistema para asegurar la estabilidad del entorno.
 
@@ -46,4 +46,4 @@ Automatización en Python diseñada para la clasificación de archivos y el moni
 
 ** Instalar dependencia: pip install watchdog
 
-**Ejecutar: python organizador.py
+** Ejecutar: python organizador.py
