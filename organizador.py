@@ -6,10 +6,21 @@ import shutil
 def mover_a_carpeta (archivo, carpeta):
     if not os.path.exists(carpeta):
         os.mkdir(carpeta)
-        print(f"Carpeta creada {carpeta}")
+    
+    ruta_destino = os.path.join(carpeta, archivo)
+    contador = 1
+    #mientras exista un archivo con ese nombre en la carpeta de destino
+    while os.path.exists(ruta_destino):
+        nombre, extension = os.path.splitext(archivo)
+        #le agregamos un numero al nombre
+        nuevo_nombre = f"{nombre}_{contador}{extension}"
+        #actualizamos la ruta destino
+        ruta_destino = os.path.join(carpeta, nuevo_nombre)
         
-    shutil.move(archivo, carpeta)
-    print(f"{archivo} --> {carpeta}")
+        contador += 1
+        
+    shutil.move(archivo, ruta_destino)
+    print(f"{archivo} --> {ruta_destino}")
     
 archivos = os.listdir('.') # solicitamos lista de archivos en esta misma carpeta
 print(archivos)
