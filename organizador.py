@@ -1,6 +1,16 @@
 import os
 import shutil
 
+#Creamos una función para el proceso de preguntar si existe la carpeta, crearla y mover el archivo
+
+def mover_a_carpeta (archivo, carpeta):
+    if not os.path.exists(carpeta):
+        os.mkdir(carpeta)
+        print(f"Carpeta creada {carpeta}")
+        
+    shutil.move(archivo, carpeta)
+    print(f"{archivo} --> {carpeta}")
+    
 archivos = os.listdir('.') # solicitamos lista de archivos en esta misma carpeta
 print(archivos)
 
@@ -14,21 +24,22 @@ for nombre_completo in archivos:
     print(f"Archivo: {nombre} | Extensión: {extension}")
     
     if extension == '.pdf':
-        carpeta_destino = 'Mis_PDFs' #Definimos nombre de la carpeta
+        mover_a_carpeta(nombre_completo, 'Mis_PDFs')
+        # carpeta_destino = 'Mis_PDFs' #Definimos nombre de la carpeta
         
-        if not os.path.exists(carpeta_destino): #Si la carpeta no existe la creamos
-            os.mkdir(carpeta_destino)
-            print(f"Carpeta {carpeta_destino} creada")
+        # if not os.path.exists(carpeta_destino): #Si la carpeta no existe la creamos
+        #     os.mkdir(carpeta_destino)
+        #     print(f"Carpeta {carpeta_destino} creada")
             
-        shutil.move(nombre_completo, carpeta_destino) #Movemos el archivo a esa carpeta
-        print(f"Moved: {nombre_completo} --> {carpeta_destino}")
+        # shutil.move(nombre_completo, carpeta_destino) #Movemos el archivo a esa carpeta
+        # print(f"Moved: {nombre_completo} --> {carpeta_destino}")
     
     elif extension == '.jpg' or extension == '.png':
-        print(f"{nombre_completo} es una IMAGEN")
+         mover_a_carpeta(nombre_completo, 'Mis_Imagenes')
     
     elif extension == '.txt':
-        print(f"{nombre_completo} es una NOTA DE TEXTO")
+         mover_a_carpeta(nombre_completo, 'Mis_Notas_Texto')
         
     else:
-        print(f"{nombre_completo} es OTROS")
+         mover_a_carpeta(nombre_completo, 'Otros')
     
