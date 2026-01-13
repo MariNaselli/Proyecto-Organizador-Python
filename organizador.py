@@ -1,4 +1,5 @@
 import os
+import shutil
 
 archivos = os.listdir('.') # solicitamos lista de archivos en esta misma carpeta
 print(archivos)
@@ -13,7 +14,14 @@ for nombre_completo in archivos:
     print(f"Archivo: {nombre} | Extensión: {extension}")
     
     if extension == '.pdf':
-        print(f"{nombre_completo} es un DOCUMENTO")
+        carpeta_destino = 'Mis_PDFs' #Definimos nombre de la carpeta
+        
+        if not os.path.exists(carpeta_destino): #Si la carpeta no existe la creamos
+            os.mkdir(carpeta_destino)
+            print(f"Carpeta {carpeta_destino} creada")
+            
+        shutil.move(nombre_completo, carpeta_destino) #Movemos el archivo a esa carpeta
+        print(f"Moved: {nombre_completo} --> {carpeta_destino}")
     
     elif extension == '.jpg' or extension == '.png':
         print(f"{nombre_completo} es una IMAGEN")
