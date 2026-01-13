@@ -43,7 +43,7 @@ def limpiar_archivos():
     archivos = os.listdir('.')
 
     for nombre_completo in archivos:
-        if os.path.isdir(nombre_completo) or nombre_completo in ['organizador.py', 'README.md', '.gitignore']:
+        if os.path.isdir(nombre_completo) or nombre_completo in ['organizador.py', 'README.md', '.gitignore', 'antes.png', 'despues.png']:
             continue
 
         clasificar_y_organizar(nombre_completo)

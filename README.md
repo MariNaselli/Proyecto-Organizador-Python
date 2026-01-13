@@ -1,41 +1,43 @@
-# Organizador de Archivos Inteligente (Híbrido)
+# Organizador de Archivos Inteligente
 
-Este proyecto es un automatizador de archivos en **Python** que combina dos potentes funciones: limpia el desorden existente apenas arranca y luego se queda vigilando en tiempo real.
+Automatización en Python diseñada para la clasificación de archivos y el monitoreo de carpetas en tiempo real.
 
-## ¿Qué hace este proyecto?
-Este organizador funciona en dos fases:
+# Funcionalidades
 
-1. **Limpieza Retroactiva:** Al ejecutarse, escanea la carpeta y organiza todos los archivos que ya estaban ahí.
-2. **Vigilancia en Tiempo Real:** Utiliza la librería `watchdog` para "escuchar" la carpeta. Si descargas o creas un archivo nuevo, el script lo detecta y lo mueve en milisegundos.
+** Gestión Híbrida: Organiza los archivos presentes al iniciar el proceso y mantiene un monitoreo constante para nuevas incorporaciones.
 
-### Características:
-* **Cerebro Centralizado:** Lógica de clasificación unificada para evitar errores.
-* **Manejo de Duplicados:** Evita sobrescribir archivos añadiendo contadores (ej: `nota_1.txt`).
-* **Soporte de Extensiones:** 
-    * **PDFs** -> `Mis_PDFs/`
-    * **Imágenes** (.jpg, .png) -> `Mis_Imagenes/`
-    * **Notas** (.txt) -> `Mis_Notas_Texto/`
-    * **Otros** -> Carpeta para archivos no clasificados.
+** Infraestructura Dinámica: El script genera automáticamente las carpetas de destino si no se encuentran en el directorio.
 
-## Demostración
+**Integridad de Datos: Implementa un sistema de numeración para evitar la sobrescritura en caso de nombres duplicados (ej: archivo_1.pdf).
 
-### Estado Inicial (Desorden)
-*La carpeta llena de archivos sueltos (.pdf, .jpg, .txt).*
+** Filtro de Exclusión: Protege el código fuente, la documentación y archivos de sistema para asegurar la estabilidad del entorno.
 
-![Carpeta desordenada](antes.png)
+# Categorización
 
-### Después: 
-*El script crea las carpetas correspondientes y mueve los archivos automáticamente.*
+** Documentos PDF → Mis_PDFs/
+** Imágenes (.jpg, .png) → Mis_Imagenes/
+** Archivos de Texto (.txt) → Mis_Notas_Texto/
+** Otros Formatos → Otros/
 
-![Carpeta organizada](después.png)
+# Demostración
 
-## Tecnologías utilizadas
-* **Python 3.13.6**
-* **Watchdog Library** (Event handler del sistema de archivos)
-* **OS & Shutil** (Gestión de rutas y movimiento de archivos)
+** Estado Inicial (Sin organizar)
+*Vista de la carpeta antes de ejecutar el script.*
 
-## Cómo usarlo
-1. Clona este repositorio.
-2. Instala la dependencia necesaria: `pip install watchdog`.
-3. Ejecuta `python organizador.py`.
-4. El script dirá: `Iniciando limpieza...` y luego se quedará en modo `Esperando nuevos archivos...`.
+![Estado inicial](antes.png)
+
+** Estado Final (Organización aplicada)
+*Resultado tras la clasificación automática.*
+
+![Estado final](despues.png)
+
+# Tecnologías
+
+** Python 3.13.6
+** Watchdog Library (Gestión de eventos del sistema de archivos)
+** OS & Shutil (Procesamiento de rutas y transferencia de datos)
+
+# Uso
+
+** Instalar dependencia: pip install watchdog
+**Ejecutar: python organizador.py
