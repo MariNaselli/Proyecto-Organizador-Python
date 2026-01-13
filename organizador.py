@@ -1,10 +1,10 @@
 import os
 import shutil
 import time
-
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
 def mover_a_carpeta(archivo, carpeta):
-
     if not os.path.exists(carpeta):
         os.mkdir(carpeta)
 
@@ -13,23 +13,17 @@ def mover_a_carpeta(archivo, carpeta):
 
     while os.path.exists(ruta_destino):
         nombre, extension = os.path.splitext(archivo)
-
         nuevo_nombre = f"{nombre}_{contador}{extension}"
-
         ruta_destino = os.path.join(carpeta, nuevo_nombre)
-
         contador += 1
 
     shutil.move(archivo, ruta_destino)
     print(f"{archivo} --> {ruta_destino}")
 
 
-print("-- Organizador encendido --")
-
-while True:
-
+def limpiar_archivos():
+    print("Iniciando limpieza de archivos existentes")
     archivos = os.listdir('.')
-    print(archivos)
 
     for nombre_completo in archivos:
 
@@ -52,5 +46,50 @@ while True:
         else:
             mover_a_carpeta(nombre_completo, 'Otros')
 
-    # El programa cada 10 segundos revisa si hay archivos por organizar
-    time.sleep(10)
+
+class OrganizadorHandler (FileSystemEventHandler):
+    # on_created cuando un archivo aparece se activa
+    def on_created(self, event):
+        # ignoramos si lo que se creó es una carpeta
+        if event.is_directory:
+            return
+        # limpiamos la ruta para que solo quede el nombre
+        nombre_archivo = os.path.basename(event.src_path)
+
+        time.sleep(1)
+
+        nombre, extension = os.path.splitext(nombre_archivo)
+        extension = extension.lower()
+
+        if extension == '.pdf':
+            mover_a_carpeta(nombre_archivo, 'Mis_PDFs')
+
+        elif extension == '.jpg' or extension == '.png':
+            mover_a_carpeta(nombre_archivo, 'Mis_Imagenes')
+
+        elif extension == '.txt':
+            mover_a_carpeta(nombre_archivo, 'Mis_Notas_Texto')
+
+        else:
+            mover_a_carpeta(nombre_archivo, 'Otros')
+            
+if __name__ == "__main__":
+    limpiar_archivos()
+    
+    event_handler = OrganizadorHandler()
+    observer = Observer()
+    observer.schedule(event_handler, path='.', recursive=False)
+    
+    observer.start()
+    print("Esperando archivos nuevos... ")
+    
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+        print("Programa Apagado")
+        
+    observer.join()
+        
+
