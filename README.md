@@ -15,8 +15,11 @@ Automatización en Python diseñada para la clasificación de archivos y el moni
 # Categorización
 
 ** Documentos PDF → Mis_PDFs/
+
 ** Imágenes (.jpg, .png) → Mis_Imagenes/
+
 ** Archivos de Texto (.txt) → Mis_Notas_Texto/
+
 ** Otros Formatos → Otros/
 
 # Demostración
@@ -34,10 +37,13 @@ Automatización en Python diseñada para la clasificación de archivos y el moni
 # Tecnologías
 
 ** Python 3.13.6
+
 ** Watchdog Library (Gestión de eventos del sistema de archivos)
+
 ** OS & Shutil (Procesamiento de rutas y transferencia de datos)
 
 # Uso
 
 ** Instalar dependencia: pip install watchdog
+
 **Ejecutar: python organizador.py
