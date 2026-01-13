@@ -1,3 +1,9 @@
+# --- ARCHIVOS DE SISTEMA ---
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
 # --- ARCHIVOS DE PRUEBA ---
 
 *.txt
@@ -6,19 +12,9 @@
 *.png
 *.pdf
 *.mp3
-*.docx
+
+# --- EXCEPCIONES ---
 
 !antes.png
 !despues.png
-
-# --- CARPETAS GENERADAS ---
-
-Mis_PDFs/
-Mis_Fotos/
-Notas_Texto/
-Otros/
-
-# --- ARCHIVOS DE SISTEMA Y PYTHON ---
-
-.DS_Store
-Thumbs.db
+!.gitkeep

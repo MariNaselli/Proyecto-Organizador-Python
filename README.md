@@ -1,14 +1,21 @@
-# Organizador de Archivos en Tiempo Real (Watchdog)
+# Organizador de Archivos Inteligente (Híbrido)
 
-Este proyecto es un script de **Python** que vigila una carpeta específica y organiza automáticamente los archivos nuevos según su extensión. 
+Este proyecto es un automatizador de archivos en **Python** que combina dos potentes funciones: limpia el desorden existente apenas arranca y luego se queda vigilando en tiempo real.
 
 ## ¿Qué hace este proyecto?
-El script utiliza la librería `watchdog` para detectar eventos de creación de archivos. No necesita ser ejecutado repetidamente; una vez encendido, se queda "escuchando" y actúa al instante.
+Este organizador funciona en dos fases:
+
+1. **Limpieza Retroactiva:** Al ejecutarse, escanea la carpeta y organiza todos los archivos que ya estaban ahí.
+2. **Vigilancia en Tiempo Real:** Utiliza la librería `watchdog` para "escuchar" la carpeta. Si descargas o creas un archivo nuevo, el script lo detecta y lo mueve en milisegundos.
 
 ### Características:
-* **Automatización total:** Detecta archivos nuevos en milisegundos.
-* **Manejo de duplicados:** Si un archivo ya existe, le añade un contador (ej: `foto_1.jpg`) para no sobrescribir nada.
-* **Clasificación inteligente:** Separa PDFs, Imágenes y Notas de texto en carpetas independientes.
+* **Cerebro Centralizado:** Lógica de clasificación unificada para evitar errores.
+* **Manejo de Duplicados:** Evita sobrescribir archivos añadiendo contadores (ej: `nota_1.txt`).
+* **Soporte de Extensiones:** 
+    * **PDFs** -> `Mis_PDFs/`
+    * **Imágenes** (.jpg, .png) -> `Mis_Imagenes/`
+    * **Notas** (.txt) -> `Mis_Notas_Texto/`
+    * **Otros** -> Carpeta para archivos no clasificados.
 
 ## Demostración
 
@@ -20,13 +27,15 @@ El script utiliza la librería `watchdog` para detectar eventos de creación de 
 ### Después: 
 *El script crea las carpetas correspondientes y mueve los archivos automáticamente.*
 
+![Carpeta organizada](después.png)
+
 ## Tecnologías utilizadas
 * **Python 3.13.6**
-* **Watchdog Library** (para la vigilancia de eventos del sistema)
-* **Shutil & OS** (para la manipulación de archivos y rutas)
+* **Watchdog Library** (Event handler del sistema de archivos)
+* **OS & Shutil** (Gestión de rutas y movimiento de archivos)
 
 ## Cómo usarlo
 1. Clona este repositorio.
 2. Instala la dependencia necesaria: `pip install watchdog`.
 3. Ejecuta `python organizador.py`.
-4. ¡Empieza a descargar o mover archivos a la carpeta y mira cómo se organizan solos!
+4. El script dirá: `Iniciando limpieza...` y luego se quedará en modo `Esperando nuevos archivos...`.
