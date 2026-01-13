@@ -1,0 +1,21 @@
+# --- ARCHIVOS DE PRUEBA ---
+
+*.txt
+*.jpg
+*.jpeg
+*.png
+*.pdf
+*.mp3
+*.docx
+
+# --- CARPETAS GENERADAS ---
+
+Mis_PDFs/
+Mis_Fotos/
+Notas_Texto/
+Otros/
+
+# --- ARCHIVOS DE SISTEMA Y PYTHON ---
+
+.DS_Store
+Thumbs.db
