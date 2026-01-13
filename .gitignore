@@ -8,6 +8,9 @@
 *.mp3
 *.docx
 
+!antes.png
+!despues.png
+
 # --- CARPETAS GENERADAS ---
 
 Mis_PDFs/

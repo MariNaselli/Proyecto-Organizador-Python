@@ -11,10 +11,10 @@ El script utiliza la librería `watchdog` para detectar eventos de creación de 
 * **Clasificación inteligente:** Separa PDFs, Imágenes y Notas de texto en carpetas independientes.
 
 ## Demostración
-> **[Capturas de pantalla"]**
 
 ### Estado Inicial (Desorden)
 *La carpeta llena de archivos sueltos (.pdf, .jpg, .txt).*
+
 ![Carpeta desordenada](antes.png)
 
 ### Después: 
