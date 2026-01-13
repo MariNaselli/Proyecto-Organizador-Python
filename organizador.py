@@ -12,3 +12,15 @@ for nombre_completo in archivos:
     #la herramienta os.path.splitext separa el nombre de la extensión. Busca el último punto de derecha a izquierda.
     print(f"Archivo: {nombre} | Extensión: {extension}")
     
+    if extension == '.pdf':
+        print(f"{nombre_completo} es un DOCUMENTO")
+    
+    elif extension == '.jpg' or extension == '.png':
+        print(f"{nombre_completo} es una IMAGEN")
+    
+    elif extension == '.txt':
+        print(f"{nombre_completo} es una NOTA DE TEXTO")
+        
+    else:
+        print(f"{nombre_completo} es OTROS")
+    
